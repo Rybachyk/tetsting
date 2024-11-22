@@ -1,0 +1,17 @@
+# Вибір базового образу
+FROM python:3.9-slim
+
+# Встановлення залежностей
+WORKDIR /app
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+
+# Копіювання додатку
+COPY app.py .
+COPY test_app.py .
+
+# Відкриття порту
+EXPOSE 5000
+
+# Запуск сервера
+CMD ["python", "app.py"]
